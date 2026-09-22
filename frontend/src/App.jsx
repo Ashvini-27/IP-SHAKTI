@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000"
+
 const exampleQuestions = [
   "Can I patent a new Ayurvedic formulation?",
   "How can I protect my Ayurvedic brand name?",
@@ -39,7 +41,7 @@ function App() {
     setLoading(true)
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/ask", {
+      const response = await fetch(`${API_URL}/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: submittedQuestion, language })
